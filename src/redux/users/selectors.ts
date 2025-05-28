@@ -9,13 +9,21 @@ const selectUsers = (state: RootState): User[] => {
 
 export const selectFilteredUsers = createSelector(
   [selectUsers, selectFilters],
-  (users, searched) => {
-    const arrayByName = users.filter((user) =>
-      user.name.toLowerCase().includes(searched.name.toLowerCase())
-    );
+  (users, { name, username, email, phone }) =>
+    users.filter((user) => {
+      const arrayByName =
+        !name || user.name.toLowerCase().includes(name.toLowerCase());
 
-    if (arrayByName.length > 0) return arrayByName;
+      const arrayByUsername =
+        !username ||
+        user.username.toLowerCase().includes(username.toLowerCase());
 
-    return users;
-  }
+      const arrayByEmail =
+        !email || user.email.toLowerCase().includes(email.toLowerCase());
+
+      const arrayByPhone =
+        !phone || user.phone.toLowerCase().includes(phone.toLowerCase());
+
+      return arrayByName && arrayByUsername && arrayByEmail && arrayByPhone;
+    })
 );
