@@ -1,6 +1,7 @@
 body {
   font-family: "Inter Tight", sans-serif;
   background: linear-gradient(135deg, #294045 0%, #1e2f33 100%);
+  min-height: 100vh;
   line-height: 1.5;
   padding: 20px;
   box-sizing: border-box;
