@@ -1,0 +1,23 @@
+// tsconfig.app.json
+{
+  "compilerOptions": {
+    // вкл. кэширование
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.cache/tsconfig.app.tsbuildinfo",
+
+    /* для браузерного React-кода */
+    "target": "ES2020",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "noEmit": true,
+
+    /* библиотеки и дополнительные возможности TS */
+    "lib": ["DOM", "DOM.Iterable", "ES2020"],
+
+    /* строгость и проверка */
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}

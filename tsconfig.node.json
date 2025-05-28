@@ -1,0 +1,22 @@
+// tsconfig.node.json
+{
+  "compilerOptions": {
+    // вкл. кэширование информации о сборке
+    "incremental": true,
+    "tsBuildInfoFile": "./node_modules/.cache/tsconfig.node.tsbuildinfo",
+
+    /* Target & Module для ваших Node-скриптов */
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "node",
+
+    /* Не эмитить файлы — Vite сам отдаёт итог при сборке */
+    "noEmit": true,
+
+    /* Поддержка современных возможностей и строга типизация */
+    "lib": ["ES2022"],
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["vite.config.ts"]
+}
