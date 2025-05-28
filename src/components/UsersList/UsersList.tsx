@@ -1,15 +1,16 @@
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { changeFilter } from "../../redux/filters/filtersSlice";
+import { selectFilteredUsers } from "../../redux/users/selectors";
 import UserItem from "../UserItem/UserItem";
 import css from "./UsersList.module.css";
 
 export default function UserList() {
   const dispatch = useAppDispatch();
-  const users = useAppSelector((state) => state.users.users);
+  //   const users = useAppSelector((state) => state.users.users);
+
+  const filteredUsers = useAppSelector(selectFilteredUsers);
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log({ value: e.target.value, filter: e.target.name });
-
     dispatch(changeFilter({ value: e.target.value, filter: e.target.name }));
   };
 
@@ -59,7 +60,7 @@ export default function UserList() {
       </div>
 
       <ul className={css.users__table}>
-        {users.map((user) => (
+        {filteredUsers.map((user) => (
           <li key={crypto.randomUUID()} className={css.table__item}>
             <UserItem user={user} />
           </li>
